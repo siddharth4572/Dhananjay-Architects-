@@ -57,8 +57,12 @@ window.addEventListener('scroll', () => {
 function toggleMenu() {
     const menu = document.getElementById('mobileMenu');
     const btn = document.getElementById('hamburgerBtn');
-    menu.classList.toggle('open');
-    btn.classList.toggle('open');
+    const isOpen = menu.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    btn.setAttribute('aria-expanded', isOpen);
+    btn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    menu.setAttribute('aria-hidden', !isOpen);
+    document.body.classList.toggle('menu-open', isOpen);
 }
 
 /* SMOOTH SCROLL */
@@ -70,6 +74,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
             t.scrollIntoView({
                 behavior: 'smooth'
             });
+            if (document.getElementById('mobileMenu').classList.contains('open')) toggleMenu();
         }
     });
 });
@@ -140,7 +145,10 @@ function closeLB() {
     document.body.style.overflow = '';
 }
 document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeLB();
+    if (e.key === 'Escape') {
+        closeLB();
+        if (document.getElementById('mobileMenu').classList.contains('open')) toggleMenu();
+    }
 });
 
 /* TESTIMONIALS */

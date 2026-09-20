@@ -35,7 +35,7 @@
         <a href="http://dmarch.in/" title="Website" target="_blank" rel="noreferrer"><i class="bi bi-globe"></i></a>
     </div>
 
-    <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
         <a href="#hero" onclick="toggleMenu()">Home</a>
         <a href="#about" onclick="toggleMenu()">About</a>
         <a href="#portfolio" onclick="toggleMenu()">Projects</a>
@@ -55,7 +55,7 @@
             <li><a href="#contact">Contact</a></li>
         </ul>
         <a href="#contact" class="nav-cta">Start a Conversation</a>
-        <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Menu">
+        <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
             <span></span><span></span><span></span>
         </button>
     </nav>
@@ -517,7 +517,7 @@
         <img src="" class="lightbox-img" id="lightboxImg" alt="Dhananjay Malhotra Architects project view" />
     </div>
 
-    <button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
         <i class="bi bi-arrow-up"></i>
     </button>
     <script src="assets/js/script2.js"></script>
